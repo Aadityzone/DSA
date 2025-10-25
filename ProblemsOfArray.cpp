@@ -152,7 +152,7 @@ void nz(vector<int> a, int n)
 
 // brutal way for union array TC->o=O(n1logn)+O(n1+n2)+(n2logn) SC->O(n1+n2) +O(n1+n2)
 
-vector<int> sortedArray(vector<int> a, vector<int> b)
+vector<int> unb(vector<int> a, vector<int> b)
 {
     int n1 = a.size();
     int n2 = b.size();
@@ -176,7 +176,7 @@ vector<int> sortedArray(vector<int> a, vector<int> b)
 
 // optimal way for union array
 
-vector<int> sorted(vector<int> &a, vector<int> &b)
+vector<int> uno(vector<int> &a, vector<int> &b)
 {
 
     int n1 = a.size();
@@ -213,9 +213,9 @@ vector<int> sorted(vector<int> &a, vector<int> &b)
     return uv;
 }
 
-// insertaion of sorted array  brutal
+// intersectation  of sorted array  brutal TC->o=O(n1logn)+O(n1+n2)+(n2logn) SC->O(n1+n2) +O(n1+n2)
 
-vector<int> sort(vector<int> &a, vector<int> &b)
+vector<int> tib(vector<int> &a, vector<int> &b)
 {
     int n1 = a.size();
     int n2 = b.size();
@@ -245,6 +245,36 @@ vector<int> sort(vector<int> &a, vector<int> &b)
     return temp;
 }
 
+// intersectation of sorted array optimize
+
+vector<int> tio(vector<int> &a, vector<int> &b)
+{
+    int n1 = a.size();
+    int n2 = b.size();
+    int i = 0, j = 0;
+    vector<int> to;
+    while (i < n1 && j < n2)
+    {
+        if (a[i] == b[j])
+        {
+            if (to.empty() || to.back() != a[i])
+                to.push_back(a[i]);
+            i++;
+            j++;
+        }
+        else if (a[i] < b[j])
+        {
+            i++;
+        }
+        else
+        {
+            j++;
+        }
+    }
+    return to;
+   
+}
+
 
 
 //  int main(){
@@ -264,9 +294,12 @@ vector<int> sort(vector<int> &a, vector<int> &b)
 
 //  }
 
-
-int main() {
+int main()
+{
     vector<int> a = {1, 2, 3, 4};
     vector<int> b = {3, 4, 5, 6};
-    vector<int> result = sort(a, b);
+    vector<int> result = tio(a, b);
+    cout << "intercation: ";
+    for (auto x : result)
+        cout << x << " ";
 }
