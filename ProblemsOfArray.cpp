@@ -275,12 +275,71 @@ vector<int> tio(vector<int> &a, vector<int> &b)
    
 }
 
+// missing no in array TC->n1+n2 ,SC->O(1)
 
+int missingNumber()
+{   
+    int n = 5;
+    int arr[] = {1, 2, 3, 5};
+    int m = sizeof(arr) / sizeof(arr[0]); 
+    int total = n * (n + 1) / 2; 
+    int sum = 0;
+    for (int i = 0; i < m; i++) {
+        sum += arr[i];
+    }
+    int missing = total - sum;
+    cout << missing << " ";
+    return missing;
+}
+
+//  max consevative no in array 
+int maxConsevation(vector<int>&a)
+{
+    
+        int maxi=0;
+        int count=0;
+        for(int i=0;i<a.size();i++){
+            if(a[i]==1){
+                count++;
+                maxi=max(maxi,count);
+            }
+            else{
+                count=0;
+            }
+        }
+        return maxi;
+
+}
+
+// bruate way to to find the number apper twice is to insertion sorting check the number is same or not ;
+// better way by hashing and using map ;
+//  find the number that apper once in array  TC->O(n) SC->O(1)
+
+int twiceApper(vector<int> &a)
+{
+    int xorr=0;
+    for(int i=0;i<a.size();i++)
+    {
+        xorr=xorr^a[i];
+    }
+
+    return xorr;
+}
+
+
+
+
+int main(){
+     vector<int> a = {1, 1, 2, 3, 3, 4, 4, 5, 5};
+     int rsl=twiceApper(a);
+     cout<<"rsl : " << rsl;
+}
 
 //  int main(){
 //     int n;
 //     cout<<"enter size of array :";
 //     cin>>n;
+
 //     int arr[n];
 //      for(int i=0;i<n;i++){
 //         cin>>arr[i];
@@ -294,12 +353,12 @@ vector<int> tio(vector<int> &a, vector<int> &b)
 
 //  }
 
-int main()
-{
-    vector<int> a = {1, 2, 3, 4};
-    vector<int> b = {3, 4, 5, 6};
-    vector<int> result = tio(a, b);
-    cout << "intercation: ";
-    for (auto x : result)
-        cout << x << " ";
-}
+// int main()
+// {
+//     vector<int> a = {1, 2, 3, 4};
+//     vector<int> b = {3, 4, 5, 6};
+//     vector<int> result = tio(a, b);
+//     cout << "intercation: ";
+//     for (auto x : result)
+//         cout << x << " ";
+// }
