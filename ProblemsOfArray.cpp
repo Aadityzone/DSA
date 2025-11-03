@@ -326,8 +326,36 @@ int twiceApper(vector<int> &a)
     return xorr;
 }
 
+//longest subarray sum of K
+ 
+//brtutal way to this is to make all sub array and then find largest sum TC->n^3
+// int longSubarray(vector<int> &a)
+// {   
+//     int k;
+//     cin>> k;
+//     int largest =0;
+//     for(int i;i=a.size();i++)
+//     {   
+//         int S=0;
+//         for(int j=i;j=a.size();j++)
+//         {
+//             for(int i;i=j;+i++)
+//             {
+//                S+=a[k];
+//             }
+//             if(S==K)
+//             {                
+//             }
+//         }
+//     }
+// }
 
-
+// optimeze way 
+int longSubarray()
+{
+    map<int,int>ls;
+                                                        
+}
 
 int main(){
      vector<int> a = {1, 1, 2, 3, 3, 4, 4, 5, 5};
