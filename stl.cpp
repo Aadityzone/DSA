@@ -16,12 +16,9 @@ void  explainVector(){
     vec.emplace_back(3,4); 
 
     vector <int> v3(5,100);
-
     vector <int> v4(5);
-
     vector <int> v1(5,20);
     vector <int> v2(v1);
-    
     vector<int>::iterator it = v.begin();
 
     it++;
@@ -31,8 +28,10 @@ void  explainVector(){
 
 
      vector<int>::iterator its = v.end();
-     /*vector<int>::iterator it = v.rend();
-       vector<int>::iterator it = v.rbegin();
+     /*
+
+     vector<int>::iterator it = v.rend();
+      vector<int>::iterator it = v.rbegin();
      */
 
      cout << v.back()<< " ";
@@ -58,6 +57,7 @@ void explainList(){
 
 }
 void explainExtra(){
+
   int a;
   int n;
   vector<int> v;
