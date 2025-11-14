@@ -6,7 +6,7 @@ struct Node
     int data;
     struct Node *left;
     struct Node *right;
-};  
+};
 Node *createNode(int value)
 {
     Node *newNode = new Node();
@@ -30,7 +30,8 @@ Node *insert(Node *root, int value)
     }
     return root;
 }
-bool search(Node* root, int k) {
+bool search(Node *root, int k)
+{
     if (root == NULL)
         return false;
     if (root->data == k)
@@ -46,32 +47,31 @@ void inorder(Node *root)
     if (root != NULL)
     {
         inorder(root->left);
-        cout << root->data<<" ";
+        cout << root->data << " ";
         inorder(root->right);
     }
 }
 
 int main()
 {
- Node*root=NULL;
- 
- root=insert(root,50);
- insert(root,40);
- insert(root,80);
- insert(root,90);
- insert(root,70);
- insert(root,30);
- insert(root,20);
+    Node *root = NULL;
 
- cout<< " LVR inorder \n";
- inorder(root);
- cout<<endl;
+    root = insert(root, 50);
+    insert(root, 40);
+    insert(root, 80);
+    insert(root, 90);
+    insert(root, 70);
+    insert(root, 30);
+    insert(root, 20);
 
- int k=90;
- if(search(root,k)){
-    cout<<k<<" is found";
- }
- 
+    cout << " LVR inorder \n";
+    inorder(root);
+    cout << endl;
 
+    int k = 90;
+    if (search(root, k))
+    {
+        cout << k << " is found";
+    }
     return 0;
 }
