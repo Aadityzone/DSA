@@ -117,18 +117,6 @@ public:
         delete nodeToDelete;
     }
 
-    // print the link list
-    void printLinkList()
-    {
-        Node *temp = head;
-        while (temp != nullptr)
-        {
-            cout << temp->data << "->";
-            temp = temp->next;
-        }
-        cout << "null" << endl;
-    }
-
     // deleted a node by value
 
     void deleteNode(int value)
@@ -158,6 +146,37 @@ public:
 
         prev->next = curr->next;
         delete curr;
+    }
+
+    // print the smallest number in linklist
+
+    int smallNum(Node *  head){
+         
+
+    int minVal = head->data;
+    Node* temp = head;
+
+    while (temp != NULL) {
+        if (temp->data < minVal) {
+            minVal = temp->data;
+        }
+        temp = temp->next;
+    }
+
+    return minVal;
+}
+
+    // print the link list
+
+    void printLinkList()
+    {
+        Node *temp = head;
+        while (temp != nullptr)
+        {
+            cout << temp->data << "->";
+            temp = temp->next;
+        }
+        cout << "null" << endl;
     }
 
     // free all node
@@ -202,6 +221,8 @@ int main()
 
     list.deleteAtPosition(list.head,4);
     list.printLinkList();
+cout<<"hu",
+    list.smallNum(list.head);
 
 }
 

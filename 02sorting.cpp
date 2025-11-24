@@ -112,6 +112,7 @@ void quickSort(int arr[], int low, int high) {
 
 int main()
 {
+    int k;
     int n;
     cout<< "enter n : ";
     cin>> n;
@@ -122,7 +123,7 @@ int main()
 //  bubble_sort(arr,n);
 //  Insertion_sort(arr,n ,);
 //  MergeSort(arr, n, 0, n - 1);
-    quickSort(arr, 0, n - 1);   
+//  quickSort(arr, 0, n - 1);   
     for(int i=0; i<n;i++)
     cout<<arr[i]<<" ";
    return 0;
