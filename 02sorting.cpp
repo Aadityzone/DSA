@@ -112,7 +112,6 @@ void quickSort(int arr[], int low, int high) {
 
 int main()
 {
-    int k;
     int n;
     cout<< "enter n : ";
     cin>> n;
@@ -128,5 +127,6 @@ int main()
     cout<<arr[i]<<" ";
    return 0;
 
+   cout<<"love";
 }
 
