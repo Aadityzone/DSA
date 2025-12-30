@@ -350,7 +350,7 @@ int longSubarray(vector<int> &a)
         }
     }
 
-// optimeze way 
+// Better way 
 int betterLongSubarray(vector<int> &a, int k)
 {
     map<long long,int>ls;
@@ -365,25 +365,51 @@ int betterLongSubarray(vector<int> &a, int k)
             if(ls.find(rem)!=ls.end()){
                 int len =i-ls[rem];
                 maxLen=max(maxLen,len);
-
             }
             if (ls.find(sum)==ls.end()){
                 ls[sum]=i;
             }
         }
         return maxLen;
-             for (auto it : ls) {
-    cout << it.first << " -> " << it.second << endl;
 }   
                                                         
+
+
+// optimeze way positive and negative 
+
+int optimzeLongSubArray(vector<int> &a,int k){
+    int left =0;
+    int right =0;
+    long long sum =a[0];
+    int n = a.size();
+    int maxLen =0;
+    while(right<n){
+        while(left<=right && sum > k){
+            sum-=a[left];
+            left++;
+
+        }
+
+        if(sum==k){
+            maxLen=max(maxLen , right-left+1);
+        }
+        right++;
+        if(right<n) sum +=a[right];
+    }
 }
 
-int main(){
-     vector<int> a = {1, 1, 2, 1, 1, 1, 3, 4, 5};
-     int k;
-      cout<<"enter the K :";
-    cin>>k;
-   betterLongSubarray(a,k);
+int main()
+{
+    vector<int> a = {1, 2, 3, 1, 1, 1, 2,  1, 3};
+
+    int k;
+    cout << "Enter value of k: ";
+    cin >> k;
+
+    int ans = optimzeLongSubArray(a, k);
+    cout << "Longest subarray length with sum " << k << " is: " << ans << endl;
+
+    return 0;
 }
 
 //  int main(){
