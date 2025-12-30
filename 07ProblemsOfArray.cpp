@@ -351,18 +351,27 @@ int longSubarray(vector<int> &a)
     }
 
 // optimeze way 
-int longSubarray()
+int betterLongSubarray(vector<int> &a, int k)
 {
-    map<int,int>ls;
-           ls[1]=1;     
-           ls[2]=9;     
-           ls[3]=2;     
-           ls[4]=3;     
-           ls[5]=7;     
-           ls[6]=6;     
-           ls[7]=5; 
-           
-           
+    map<long long,int>ls;
+        long long sum =0;  
+         int maxLen=0;  
+           for (int i=0 ;i<a.size();i++){
+            sum +=a[i];
+            if(sum==k){
+                maxLen= max(maxLen, i+1);
+            }
+            long long rem =sum -k;   
+            if(ls.find(rem)!=ls.end()){
+                int len =i-ls[rem];
+                maxLen=max(maxLen,len);
+
+            }
+            if (ls.find(sum)==ls.end()){
+                ls[sum]=i;
+            }
+        }
+        return maxLen;
              for (auto it : ls) {
     cout << it.first << " -> " << it.second << endl;
 }   
@@ -370,10 +379,11 @@ int longSubarray()
 }
 
 int main(){
-    //  vector<int> a = {1, 1, 2, 3, 3, 4, 4, 5, 5};
-    //  int rsl=twiceApper(a);
-    //  cout<<"rsl : " << rsl;
-   longSubarray();
+     vector<int> a = {1, 1, 2, 1, 1, 1, 3, 4, 5};
+     int k;
+      cout<<"enter the K :";
+    cin>>k;
+   betterLongSubarray(a,k);
 }
 
 //  int main(){
