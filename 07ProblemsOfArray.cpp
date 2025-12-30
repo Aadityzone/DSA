@@ -272,19 +272,19 @@ vector<int> tio(vector<int> &a, vector<int> &b)
         }
     }
     return to;
-   
 }
 
 // missing no in array TC->n1+n2 ,SC->O(1)
 
 int missingNumber()
-{   
+{
     int n = 5;
     int arr[] = {1, 2, 3, 5};
-    int m = sizeof(arr) / sizeof(arr[0]); 
-    int total = n * (n + 1) / 2; 
+    int m = sizeof(arr) / sizeof(arr[0]);
+    int total = n * (n + 1) / 2;
     int sum = 0;
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++)
+    {
         sum += arr[i];
     }
     int missing = total - sum;
@@ -292,23 +292,25 @@ int missingNumber()
     return missing;
 }
 
-//  max consevative no in array 
-int maxConsevation(vector<int>&a)
+//  max consevative no in array
+int maxConsevation(vector<int> &a)
 {
-    
-        int maxi=0;
-        int count=0;
-        for(int i=0;i<a.size();i++){
-            if(a[i]==1){
-                count++;
-                maxi=max(maxi,count);
-            }
-            else{
-                count=0;
-            }
-        }
-        return maxi;
 
+    int maxi = 0;
+    int count = 0;
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (a[i] == 1)
+        {
+            count++;
+            maxi = max(maxi, count);
+        }
+        else
+        {
+            count = 0;
+        }
+    }
+    return maxi;
 }
 
 // bruate way to to find the number apper twice is to insertion sorting check the number is same or not ;
@@ -317,97 +319,146 @@ int maxConsevation(vector<int>&a)
 
 int twiceApper(vector<int> &a)
 {
-    int xorr=0;
-    for(int i=0;i<a.size();i++)
+    int xorr = 0;
+    for (int i = 0; i < a.size(); i++)
     {
-        xorr=xorr^a[i];
+        xorr = xorr ^ a[i];
     }
 
     return xorr;
 }
 
-//longest subarray sum of K
- 
-//brtutal way to this is to make all sub array and then find largest sum TC->n^3
+// longest subarray sum of K
+
+// brtutal way to this is to make all sub array and then find largest sum TC->n^3
 int longSubarray(vector<int> &a)
-    {   
-        int k;
-        cin>> k;
-        int largest =0;
-        for(int i;i=a.size();i++)
-        {   
-            int S=0;
-            for(int j=i;j=a.size();j++)
-            {
-                for(int i;i=j;+i++)
-                {
-                S+=a[k];
-                }
-                if(S==k)
-                {                 
-                }
-            }
-        }
-    }
-
-// Better way 
-int betterLongSubarray(vector<int> &a, int k)
 {
-    map<long long,int>ls;
-        long long sum =0;  
-         int maxLen=0;  
-           for (int i=0 ;i<a.size();i++){
-            sum +=a[i];
-            if(sum==k){
-                maxLen= max(maxLen, i+1);
+    int k;
+    cin >> k;
+    int largest = 0;
+    for (int i; i = a.size(); i++)
+    {
+        int S = 0;
+        for (int j = i; j = a.size(); j++)
+        {
+            for (int i; i = j; +i++)
+            {
+                S += a[k];
             }
-            long long rem =sum -k;   
-            if(ls.find(rem)!=ls.end()){
-                int len =i-ls[rem];
-                maxLen=max(maxLen,len);
-            }
-            if (ls.find(sum)==ls.end()){
-                ls[sum]=i;
+            if (S == k)
+            {
             }
         }
-        return maxLen;
-}   
-                                                        
-
-
-// optimeze way positive and negative 
-
-int optimzeLongSubArray(vector<int> &a,int k){
-    int left =0;
-    int right =0;
-    long long sum =a[0];
-    int n = a.size();
-    int maxLen =0;
-    while(right<n){
-        while(left<=right && sum > k){
-            sum-=a[left];
-            left++;
-
-        }
-
-        if(sum==k){
-            maxLen=max(maxLen , right-left+1);
-        }
-        right++;
-        if(right<n) sum +=a[right];
     }
 }
 
+// Better way
+int betterLongSubarray(vector<int> &a, int k)
+{
+    map<long long, int> ls;
+    long long sum = 0;
+    int maxLen = 0;
+    for (int i = 0; i < a.size(); i++)
+    {
+        sum += a[i];
+        if (sum == k)
+        {
+            maxLen = max(maxLen, i + 1);
+        }
+        long long rem = sum - k;
+        if (ls.find(rem) != ls.end())
+        {
+            int len = i - ls[rem];
+            maxLen = max(maxLen, len);
+        }
+        if (ls.find(sum) == ls.end())
+        {
+            ls[sum] = i;
+        }
+    }
+    return maxLen;
+}
+
+// optimeze way positive and negative
+
+int optimzeLongSubArray(vector<int> &a, int k)
+{
+    int left = 0;
+    int right = 0;
+    long long sum = a[0];
+    int n = a.size();
+    int maxLen = 0;
+    while (right < n)
+    {
+        while (left <= right && sum > k)
+        {
+            sum -= a[left];
+            left++;
+        }
+
+        if (sum == k)
+        {
+            maxLen = max(maxLen, right - left + 1);
+        }
+        right++;
+        if (right < n)
+            sum += a[right];
+    }
+    return maxLen;
+}
+
+// Sort an array 0's, 1's and 2's
+// brute solution is Merage sort
+
+// better solution
+int sortedArrayOfZeroOneTwo(vector<int> &a)
+{
+    int count0 = 0,
+    count1 = 0,
+     count2 = 0;
+
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (a[i] == 0)
+        {
+            count0++;
+        }
+        else if (a[i] == 1)
+        {
+            count1++;
+        }
+        else
+        {
+            count2++;
+        }
+    }
+    int index = 0;
+
+    for (int i = 0; i < count0; i++)
+    {
+         a[index++] = 0;
+       
+    }
+    for (int i = 0; i < count1; i++)
+    {
+         a[index++] = 1;
+      
+    }
+    for (int i = 0; i < count2; i++)
+    {
+        a[index++] = 2;
+
+    }
+
+}
 int main()
 {
-    vector<int> a = {1, 2, 3, 1, 1, 1, 2,  1, 3};
+    vector<int> a = {0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1};
 
-    int k;
-    cout << "Enter value of k: ";
-    cin >> k;
+    sortedArrayOfZeroOneTwo(a);
 
-    int ans = optimzeLongSubArray(a, k);
-    cout << "Longest subarray length with sum " << k << " is: " << ans << endl;
+    for (int x : a)
+        cout << x << " ";
 
     return 0;
 }
