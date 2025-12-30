@@ -329,38 +329,51 @@ int twiceApper(vector<int> &a)
 //longest subarray sum of K
  
 //brtutal way to this is to make all sub array and then find largest sum TC->n^3
-// int longSubarray(vector<int> &a)
-// {   
-//     int k;
-//     cin>> k;
-//     int largest =0;
-//     for(int i;i=a.size();i++)
-//     {   
-//         int S=0;
-//         for(int j=i;j=a.size();j++)
-//         {
-//             for(int i;i=j;+i++)
-//             {
-//                S+=a[k];
-//             }
-//             if(S==K)
-//             {                
-//             }
-//         }
-//     }
-// }
+int longSubarray(vector<int> &a)
+    {   
+        int k;
+        cin>> k;
+        int largest =0;
+        for(int i;i=a.size();i++)
+        {   
+            int S=0;
+            for(int j=i;j=a.size();j++)
+            {
+                for(int i;i=j;+i++)
+                {
+                S+=a[k];
+                }
+                if(S==k)
+                {                 
+                }
+            }
+        }
+    }
 
 // optimeze way 
 int longSubarray()
 {
     map<int,int>ls;
+           ls[1]=1;     
+           ls[2]=9;     
+           ls[3]=2;     
+           ls[4]=3;     
+           ls[5]=7;     
+           ls[6]=6;     
+           ls[7]=5; 
+           
+           
+             for (auto it : ls) {
+    cout << it.first << " -> " << it.second << endl;
+}   
                                                         
 }
 
 int main(){
-     vector<int> a = {1, 1, 2, 3, 3, 4, 4, 5, 5};
-     int rsl=twiceApper(a);
-     cout<<"rsl : " << rsl;
+    //  vector<int> a = {1, 1, 2, 3, 3, 4, 4, 5, 5};
+    //  int rsl=twiceApper(a);
+    //  cout<<"rsl : " << rsl;
+   longSubarray();
 }
 
 //  int main(){

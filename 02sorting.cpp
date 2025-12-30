@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void  section_sort(int arr[],int n){
+void  section_sort(int arr[],int n){ 
 
     for(int i=0;i<=n-2;i++){
         int min=i;
@@ -118,7 +118,7 @@ int main()
     int arr[n];
     for(int i=0; i<n;i++)
     cin>>arr[i];
-     section_sort(arr,n);
+    section_sort(arr,n);
 //  bubble_sort(arr,n);
 //  Insertion_sort(arr,n ,);
 //  MergeSort(arr, n, 0, n - 1);
@@ -127,6 +127,5 @@ int main()
     cout<<arr[i]<<" ";
    return 0;
 
-   cout<<"love";
 }
 
