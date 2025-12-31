@@ -414,8 +414,8 @@ int optimzeLongSubArray(vector<int> &a, int k)
 int sortedArrayOfZeroOneTwo(vector<int> &a)
 {
     int count0 = 0,
-    count1 = 0,
-     count2 = 0;
+        count1 = 0,
+        count2 = 0;
 
     for (int i = 0; i < a.size(); i++)
     {
@@ -436,32 +436,63 @@ int sortedArrayOfZeroOneTwo(vector<int> &a)
 
     for (int i = 0; i < count0; i++)
     {
-         a[index++] = 0;
-       
+        a[index++] = 0;
     }
     for (int i = 0; i < count1; i++)
     {
-         a[index++] = 1;
-      
+        a[index++] = 1;
     }
     for (int i = 0; i < count2; i++)
     {
         a[index++] = 2;
-
     }
-
 }
+
+// otimze solution
+int optimzeSortedArrayOfZeroOneTwo(vector<int> &a, int n)
+{
+
+    int mid = 0, low = 0, high = n - 1;
+    while (mid <= high)
+    {
+        if (a[mid] == 0)
+        {
+            swap(a[mid], a[low]);
+            mid++;
+            low++;
+        }
+        else if (a[mid] == 1)
+        {
+            mid++;
+        }
+        else
+        {
+            swap(a[mid], a[high]);
+            high--;
+        }
+    }
+}
+
 int main()
 {
     vector<int> a = {0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1};
+    int n = a.size();
 
-    sortedArrayOfZeroOneTwo(a);
+    optimzeSortedArrayOfZeroOneTwo(a, n);
 
     for (int x : a)
         cout << x << " ";
 
     return 0;
 }
+// int main()
+// {
+//     vector<int> a = {0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1};
+//     sortedArrayOfZeroOneTwo(a);
+//     for (int x : a)
+//         cout << x << " ";
+//     return 0;
+// }
 
 //  int main(){
 //     int n;
