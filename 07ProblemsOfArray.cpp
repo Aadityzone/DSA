@@ -473,18 +473,113 @@ int optimzeSortedArrayOfZeroOneTwo(vector<int> &a, int n)
     }
 }
 
+// Majority Elements n/2
+
+// bruteforce TC->O(N^2)
+
+int majorityElement(vector<int> &a, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        int count = 0; // reset for each element
+
+        for (int j = 0; j < n; j++)
+        {
+            if (a[j] == a[i])
+            {
+                count++;
+            }
+        }
+
+        if (count > n / 2)
+        {
+            return a[i];
+        }
+    }
+    return -1; // no majority element
+}
+
+// betterSolution
+int betterMajorityElement(vector<int> &a)
+{
+    map<int, int> bme;
+
+    for (int i = 0; i < a.size(); i++)
+    {
+        bme[a[i]]++;
+    }
+
+    for (auto it : bme)
+    {
+        if (it.second > (a.size() / 2))
+        {
+            return it.first;
+        }
+    }
+    return -1;
+}
+
+// optimalSolution
+// Moore's Voting Algorithm
+int optimalMajorityElement(vector<int> &a)
+{
+    int elm;
+    int count = 0;
+
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (count = 0)
+        {
+            count = 1;
+            elm = a[i];
+        }
+        else if (a[i] == elm)
+        {
+            count++;
+        }
+        else
+        {
+            count--;
+        }
+    }
+    int count1 = 0;
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (a[i] == elm)
+        {
+            count++;
+        }
+    }
+    if (count1 > (a.size() / 2))
+    {
+        return elm;
+    }
+    return -1;
+}
+
 int main()
 {
-    vector<int> a = {0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1};
-    int n = a.size();
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
 
-    optimzeSortedArrayOfZeroOneTwo(a, n);
+    vector<int> a(n);
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
 
-    for (int x : a)
-        cout << x << " ";
+    int ans = betterMajorityElement(a);
+
+    if (ans != -1)
+        cout << "Majority Element: " << ans << endl;
+    else
+        cout << "No Majority Element found" << endl;
 
     return 0;
 }
+
 // int main()
 // {
 //     vector<int> a = {0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1};
@@ -494,12 +589,12 @@ int main()
 //     return 0;
 // }
 
-//  int main(){
+// int main(){
 //     int n;
 //     cout<<"enter size of array :";
 //     cin>>n;
 
-//     int arr[n];
+// int arr[n];
 //      for(int i=0;i<n;i++){
 //         cin>>arr[i];
 //     }
@@ -509,7 +604,6 @@ int main()
 //     }
 //        int second = secondLargest(arr,n);
 //        cout << "Second largest: " << second << endl;
-
 //  }
 
 // int main()
