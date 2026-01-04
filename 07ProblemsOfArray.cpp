@@ -81,29 +81,33 @@ void leftrotate(int arr[], int n)
 // lefft rotate array by D place
 
 // Bruteal way it have TC->O(n) SC->O(d)
-//  void LeftRotateByD(int arr[],int n,int d){
-//         d=d%n;
-//         int temp[d];
-//         for(int i=0;i<d;i++) {
-//             temp[i]=arr[i];
-//         }
-//         for(int i=d;i<n;i++){
-//             arr[i-d]=arr[i];
-//         }
-//         for(int i=n-d;i<n;i++){
-//             arr[i]=temp[i-(n-d)];
-//         }
 
-//     }
+void leftRotateByD(int arr[], int n, int d)
+{
+    d = d % n;
+    int temp[d];
+    for (int i = 0; i < d; i++)
+    {
+        temp[i] = arr[i];
+    }
+    for (int i = d; i < n; i++)
+    {
+        arr[i - d] = arr[i];
+    }
+    for (int i = n - d; i < n; i++)
+    {
+        arr[i] = temp[i - (n - d)];
+    }
+}
 
 // optimize way it have TC->O(2n) SC->(1) it have more time complsxcity than the brute way but it reduce the SC because we dont need to take temp arr
 
-//  void LeftRotateByD(int arr[],int n,int d){
-//              reverse(arr,arr+d);
-//              reverse(arr+d,arr+n);
-//              reverse(arr+n,arr);
-
-//         }
+void optimzeLeftRotateByD(int arr[], int n, int d)
+{
+    reverse(arr, arr + d);
+    reverse(arr + d, arr + n);
+    reverse(arr + n, arr);
+}
 
 // move all zero at last of array
 
@@ -528,7 +532,7 @@ int optimalMajorityElement(vector<int> &a)
 
     for (int i = 0; i < a.size(); i++)
     {
-        if (count = 0)
+        if (count == 0)
         {
             count = 1;
             elm = a[i];
@@ -547,7 +551,7 @@ int optimalMajorityElement(vector<int> &a)
     {
         if (a[i] == elm)
         {
-            count++;
+            count1++;
         }
     }
     if (count1 > (a.size() / 2))
@@ -557,28 +561,158 @@ int optimalMajorityElement(vector<int> &a)
     return -1;
 }
 
+//  maximum Subarray
+// brute force TC->(N^3)
+
+int MaximumSubArray(vector<int> &a)
+{
+    int maxi = INT16_MIN;
+
+    for (int i = 0; i < a.size(); i++)
+    {
+
+        for (int j = i; j < a.size(); j++)
+        {
+            int sum = 0;
+            for (int k = i; k < j; k++)
+            {
+                sum += a[k];
+                maxi = max(sum, maxi);
+            }
+        }
+    }
+    return maxi;
+}
+// better way TC->(N^2)
+
+int betterMaximumSubArray(vector<int> &a)
+{
+    int maxi = INT16_MIN;
+
+    for (int i = 0; i < a.size(); i++)
+    {
+
+        for (int j = i; j < a.size(); j++)
+        {
+            int sum = 0;
+
+            sum += a[j];
+            maxi = max(sum, maxi);
+        }
+    }
+    return maxi;
+}
+
+// optimze way
+//  Kadane's Algorithm
+int optimzeMaximumSubArray(vector<int> &a)
+{
+    int maxi = INT16_MIN;
+    int sum = 0;
+    for (int i = 0; i < a.size(); i++)
+    {
+
+        sum += a[i];
+
+        if (sum > maxi)
+        {
+            maxi = sum;
+        }
+
+        if (sum < 0)
+        {
+            sum = 0;
+        }
+    }
+
+    return maxi;
+}
+
+int optimzeMaximumSubArrayIndex(vector<int> &a)
+{
+    int maxi = INT16_MIN;
+    int sum = 0;
+    int start;
+    int ansStart = -1;
+    int ansEnd = -1;
+
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (sum == 0)
+        {
+            start = i;
+        }
+        sum += a[i];
+
+        if (sum > maxi)
+        {
+            maxi = sum;
+            ansStart = start;
+            ansEnd = i;
+        }
+
+        if (sum < 0)
+        {
+            sum = 0;
+        }
+    }
+
+    return maxi;
+}
+
+// best time to buy and sell the stocks
+
+// Q1 find maximum profit
+int maximumProfit(vector<int> &a)
+{
+    int mini = a[0];
+    int profit = 0;
+
+    for (int i = 0; i < a.size(); i++)
+    {
+        int cost = a[i] - mini;
+        profit = max(profit, cost);
+        mini = min(mini, a[i]);
+    }
+    return profit;
+}
+
+// Q2 find maximum profit recurssion
+ 
 int main()
 {
     int n;
     cout << "Enter number of elements: ";
     cin >> n;
-
     vector<int> a(n);
     cout << "Enter elements: ";
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-
-    int ans = betterMajorityElement(a);
-
-    if (ans != -1)
-        cout << "Majority Element: " << ans << endl;
-    else
-        cout << "No Majority Element found" << endl;
-
+    int ans = maximumProfit(a);
+    cout<< ans << endl;
     return 0;
 }
+
+//  int main()
+//  {
+//     int n;
+//     cout << "Enter number of elements: ";
+//     cin >> n;
+//     vector<int> a(n);
+//     cout << "Enter elements: ";
+//     for (int i = 0; i < n; i++)
+//     {
+//         cin >> a[i];
+//     }
+//     int ans = optimalMajorityElement(a);
+//     if (ans != -1)
+//         cout << "Majority Element: " << ans << endl;
+//     else
+//         cout << "No Majority Element found" << endl;
+//     return 0;
+// }
 
 // int main()
 // {
