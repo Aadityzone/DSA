@@ -113,7 +113,7 @@ void optimzeLeftRotateByD(int arr[], int n, int d)
 
 // bruteal way Tc->O(2n) SC->O(n)
 
-void MoveAllZeroAtLast(vector<int> a, int n, int d)
+void moveAllZeroAtLast(vector<int> a, int n, int d)
 {
     vector<int> temp;
     for (int i = 0; i < n; i++)
@@ -134,7 +134,7 @@ void MoveAllZeroAtLast(vector<int> a, int n, int d)
 
 // optimize way it have TC->O()
 
-void nz(vector<int> a, int n)
+void optimalMoveAllZeroAtLas(vector<int> a, int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -156,7 +156,7 @@ void nz(vector<int> a, int n)
 
 // brutal way for union array TC->o=O(n1logn)+O(n1+n2)+(n2logn) SC->O(n1+n2) +O(n1+n2)
 
-vector<int> unb(vector<int> a, vector<int> b)
+vector<int> brutalUnionArray(vector<int> a, vector<int> b)
 {
     int n1 = a.size();
     int n2 = b.size();
@@ -180,7 +180,7 @@ vector<int> unb(vector<int> a, vector<int> b)
 
 // optimal way for union array
 
-vector<int> uno(vector<int> &a, vector<int> &b)
+vector<int> optimalUnionArray(vector<int> &a, vector<int> &b)
 {
 
     int n1 = a.size();
@@ -219,7 +219,7 @@ vector<int> uno(vector<int> &a, vector<int> &b)
 
 // intersectation  of sorted array  brutal TC->o=O(n1logn)+O(n1+n2)+(n2logn) SC->O(n1+n2) +O(n1+n2)
 
-vector<int> tib(vector<int> &a, vector<int> &b)
+vector<int> intersectionOfSortedAarry(vector<int> &a, vector<int> &b)
 {
     int n1 = a.size();
     int n2 = b.size();
@@ -251,7 +251,7 @@ vector<int> tib(vector<int> &a, vector<int> &b)
 
 // intersectation of sorted array optimize
 
-vector<int> tio(vector<int> &a, vector<int> &b)
+vector<int> optimalIntersectionOfSortedAarry(vector<int> &a, vector<int> &b)
 {
     int n1 = a.size();
     int n2 = b.size();
@@ -658,7 +658,7 @@ int optimzeMaximumSubArrayIndex(vector<int> &a)
     }
 
     return maxi;
-}
+}   
 
 // best time to buy and sell the stocks
 
@@ -678,7 +678,14 @@ int maximumProfit(vector<int> &a)
 }
 
 // Q2 find maximum profit recurssion
- 
+
+int recurssiveMaximunProfit(vector<int>&a)
+
+{ 
+    int maxi=INT16_MIN;
+    
+}
+
 int main()
 {
     int n;
