@@ -35,7 +35,7 @@ public:
     {
         if (top <= 0)
         {
-            cout << "dhf";
+            cout << "STACK IS UNDERFLOW";
         }
         else
         {
@@ -83,20 +83,20 @@ public:
             return;
         }
         if (front == -1)
-            front = 0; // first insertion
+            front = 0;
         rear++;
         arr[rear] = value;
-        cout << value << " inserted into queue.\n";
+        cout << value << " inserted\n";
     }
     
     void dequeue()
     {
         if (front == -1 || front > rear)
         {
-            cout << "Queue Underflow! No element to delete.\n";
+            cout << "Queue Underflow\n";
             return;
         }
-        cout << arr[front] << " deleted from queue.\n";
+        cout << arr[front] << "deleted\n";
         front++;
     }
 

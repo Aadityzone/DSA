@@ -57,8 +57,8 @@ class MaxHeap {
     void heapifyUp(int index) {
         while (index > 0) {
             int parent = (index - 1) / 2;
-            if (heap[parent] < heap[index]) {
-                swap(heap[parent], heap[index]);
+            if (arr[parent] < arr[index]) {
+                swap(arr[parent], arr[index]);
                 index = parent;
             } else {
                 break;
@@ -68,19 +68,19 @@ class MaxHeap {
 
     // Heapify Down (for deletion)
     void heapifyDown(int index) {
-        int size = heap.size();
+        int size = arr.size();
         while (true) {
             int left = 2 * index + 1;
             int right = 2 * index + 2;
             int largest = index;
 
-            if (left < size && heap[left] > heap[largest])
+            if (left < size && arr[left] >arr[largest])
                 largest = left;
-            if (right < size && heap[right] > heap[largest])
+            if (right < size && arr[right] > arr[largest])
                 largest = right;
 
             if (largest != index) {
-                swap(heap[index], heap[largest]);
+                swap(arr[index], arr[largest]);
                 index = largest;
             } else {
                 break;
@@ -91,7 +91,9 @@ class MaxHeap {
 public:
     // Insert element
     void insert(int value) {
-        heap.push_back(value);
+        for(int i=0;i<n;i++){
+            cin>> ar   r[i];
+        }
         heapifyUp(heap.size() - 1);
     }
 

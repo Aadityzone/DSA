@@ -382,7 +382,7 @@ int betterLongSubarray(vector<int> &a, int k)
     }
     return maxLen;
 }
-
+   
 // optimeze way positive and negative
 
 int optimzeLongSubArray(vector<int> &a, int k)

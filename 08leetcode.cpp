@@ -81,14 +81,110 @@ public:
 };
 
 // Container With Most Water
+// ques 3
+// brute
 
-class Sol
+class Solution
 {
 public:
     int maxArea(vector<int> &height)
     {
-        for(int i=0;i<0;i++){
-            
+        int largestArea = 0;
+        for (int i = 0; i < height.size(); i++)
+        {
+            for (int j = i + 1; j < height.size(); j++)
+            {
+                int minx = min(height[i], height[j]);
+                int area = minx * (j - i);
+                if (largestArea < area)
+                {
+                    largestArea = area;
+                }
+            }
         }
+        return largestArea;
+    }
+};
+
+class Solution
+{
+public:
+    int maxArea(vector<int> &height)
+    {
+        int max = height[0];
+        int scmax = 0;
+        for (int i = 1; i < height.size(); i++)
+        {
+            if (height[i] > max)
+            {
+                scmax = max;
+                max = height[i];
+            }
+            else if (height[i] > scmax && height[i] != max)
+            {
+                scmax = height[i];
+            }
+        }
+    }
+};
+
+class Solution
+{
+public:
+    int maxArea(vector<int> &height)
+    {
+        int n = height.size();
+        int *ptr1 = &height[0];
+        int *ptr2 = &height[n - 1];
+        int newarea;
+        int area = min(height[ptr1 - &height[0]], height[ptr2 - &height[0]]) * (ptr2 - ptr1);
+        for (int i = 1; i < n; i++)
+        {
+            newarea = min(height[ptr1 - &height[0]], height[ptr2 - i - &height[0]]) * (ptr2 - i - ptr1);
+            if ((*ptr2 - *(ptr2 - i)) > i && newarea > area)
+            {
+                ptr2 -= i;
+                area = newarea;
+            }
+        }
+        for (int j = 0; j < (ptr2 - ptr1); j++)
+        {
+            newarea = min(height[ptr1 + j - &height[0]], height[ptr2 - &height[0]]) * (ptr2 - ptr1 + j);
+            if ((*ptr1 - *(ptr1 + j)) > j && newarea > area)
+            {
+                ptr1 += j;
+                area = newarea;
+            }
+        }
+        return area;
+    }
+};
+
+class Solution
+{
+public:
+    string longestCommonPrefix(vector<string> &strs)
+    {
+
+        if (strs.size() == 0)
+            return "";
+
+        string first = strs[0];
+
+        for (int i = 0; i < first.length(); i++)
+        {
+
+            char currentChar = first[i];
+
+            for (int j = 1; j < strs.size(); j++)
+            {
+
+                if (i >= strs[j].length() || strs[j][i] != currentChar)
+                {
+                    return first.substr(0, i);
+                }
+            }
+        }
+        return first;
     }
 };

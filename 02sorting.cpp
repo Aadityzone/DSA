@@ -76,15 +76,14 @@ void MergeSort(int arr[],int n,int low,int high){
 
 }
 int partition(int arr[], int low, int high) {
-    if (low>high) {
         int pivort = arr[low];
         int i = low;
         int j = high;   
         while(i<j){
-            while (arr[i]<=arr[pivort] && i<=high){
+            while (arr[i]<=pivort && i<=high){
                 i++;
             }
-            while(arr[j]>arr[pivort]&&j>=low){
+            while(arr[j]>pivort&&j>=low){
                 j--;
             }
             if(i<j){
@@ -93,11 +92,11 @@ int partition(int arr[], int low, int high) {
                 arr[j]=temp;
             }   
         }
-        int temp=arr[j];
-        arr[j]=arr[pivort];
-        arr[pivort]=temp;
+        int temp = arr[j];
+        arr[j] = arr[low];
+        arr[low] = temp;
         return j;
-    }
+    
 }
 void quickSort(int arr[], int low, int high) {
     if (low < high) {
@@ -106,7 +105,7 @@ void quickSort(int arr[], int low, int high) {
         quickSort(arr, pivort + 1, high);
         
     }
-}
+} 
 
 
 
