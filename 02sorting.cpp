@@ -42,38 +42,42 @@ void Insertion_sort(int arr[],int n){
 
     }
 }
-void MergeSort(int arr[],int n,int low,int high){
+void MergeSort(int arr[], int n, int low, int high) {
 
-    if(low<high){
-        int mid=(low+high)/2;
-        MergeSort(arr,n,low,mid);
-        MergeSort(arr,n,mid+1,high);
+    if (low < high) {
 
-        int i=low;
-        int j=mid+1;
-        int k=low;
+        int mid = (low + high) / 2;
+        MergeSort(arr, n, low, mid);
+        MergeSort(arr, n, mid + 1, high);
+
+        int i = low;
+        int j = mid + 1;
+        int k = low;
+
         int b[n];
-        while(i<=mid && j<=high){
-            if(arr[i]<arr[j]){
-                b[k++]=arr[i++];
+
+        while (i <= mid && j <= high) {
+
+            if (arr[i] < arr[j]) {
+                b[k++] = arr[i++];
             }
-            else{
-                b[k++]=arr[j++];
+            else {
+                b[k++] = arr[j++];
             }
         }
-        while(i<=mid){
-            b[k++]=arr[i++];
-        }
-        while(j<=high){
-            b[k++]=arr[j++];
-        }
-        for(int p=low;p<=high;p++){
-            arr[p]=b[p];
+
+        while (i <= mid) {
+            b[k++] = arr[i++];
         }
 
-    }   
+        while (j <= high) {
+            b[k++] = arr[j++];
+        }
 
-
+        for (int p = low; p <= high; p++) {
+            arr[p] = b[p];
+        }
+    }
 }
 int partition(int arr[], int low, int high) {
         int pivort = arr[low];
