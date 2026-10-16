@@ -137,7 +137,7 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        print7(n);   
+        print10(n);   
     }
 
     return 0;

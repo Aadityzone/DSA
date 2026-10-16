@@ -11,7 +11,7 @@ int sum(int freq[], int i, int j) {
 
 int optimalBST(int freq[], int n) {
     int cost[100][100];
-    
+
     for (int i = 0; i < n; i++)
         cost[i][i] = freq[i];
 
@@ -49,6 +49,5 @@ int main() {
         cin >> freq[i];
 
     cout << "Minimum cost of OBST: " << optimalBST(freq, n);
-
     return 0;
 }
